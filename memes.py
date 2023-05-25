@@ -1,12 +1,42 @@
 import requests
 import json
+import openai
+import random
 
+# Set up your OpenAI API key
+openai.api_key = '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'
+
+# Generate a joke using the OpenAI API
+def generate_joke():
+    lang = ['python', 'java', 'html', 'rust', 'c++', 'html', 'css', 'javascript', 'go', 'flutter']
+    # Select a random language
+    lang = random.choice(lang)
+    print(lang)
+    prompt = "Tell me a joke in " + lang + "?"
+
+    max_tokens = 60  # Maximum length of the joke 
+    
+    response = openai.Completion.create(
+        engine='text-davinci-003',
+        prompt=prompt,
+        max_tokens=max_tokens,
+        n=1,
+        stop=None,
+        temperature=0.6
+    )
+    
+    joke = response.choices[0].text.strip()
+    return joke
+
+# Call the function to generate a joke
+joke = generate_joke()
+print(joke)
 
 # Set the API endpoint URL
 url = 'https://api.linkedin.com/v2/ugcPosts'
 
 # Set the access token for authentication
-access_token = 'AQUelWDZJgqgdHsakO0KLCG61xB7Oe5pTDZq1D34GESfuXgqI2IGU8GU1K1_0E5-X8yEaeA1pYshv4i5-ydN6lJWoJvtiOy9y_ITaHLIRZFDOsCBJaOrZk9PBhUUtvFTSwIu0LFzJdWtsggrKxnL4lNnwkHKRv6P3BqFty8OsvoYuEnYZCHaSnwGGUAnP6AG7KZzC08Dw8raOKJYspeCQbqsMBFgI29gafOAYntm1WVUwXodSGviOY80CKkQP4JdBy78alefNaEvE3hnvYVRM-8QxS8NF2DnMlsW5enENOzA1X3tomPbR8aJa1tWxjFYXS1IH4cQuqrP7LDtYv0MiRFj4MdmQQ'
+access_token = 'YOUR_ACCESS_TOKEN'
 
 # Set the headers for the API request
 headers = {
@@ -16,12 +46,12 @@ headers = {
 
 # Set the payload for the API request
 payload = {
-    'author': 'urn:li:page:https://www.linkedin.com/company/memes-ai/',
+    'author': 'urn:li:person:YOUR_USER_ID',
     'lifecycleState': 'PUBLISHED',
     'specificContent': {
         'com.linkedin.ugc.ShareContent': {
             'shareCommentary': {
-                'text': 'Hello, LinkedIn!'
+                'text': joke  # Use the generated joke as the text
             },
             'shareMediaCategory': 'NONE'
         }
