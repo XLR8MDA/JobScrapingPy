@@ -36,7 +36,7 @@ print(joke)
 url = 'https://api.linkedin.com/v2/ugcPosts'
 
 # Set the access token for authentication
-access_token = 'YOUR_ACCESS_TOKEN'
+access_token = 'AQW7Ho2mEejtGoIewNFiciJkN-ZFlZlif2gXVoOcIPXdj51em1xG2UuZ1h_T4Zdg0c42L68IR56nuaknYOJ6vlNOEhwTJ9hOlD5oBoUJnXEilg23It9JPPvbDl-xd7XDV2hn1Ot_M0AQTur9vhiPG-aQ2VxgIZBrlBB5zy56q6YgcteFfPt1uEy8wDVV63TP7XitiMF8w0ISh4Eu5dvNuWT0YgzH3e5OSyDCi49UGx5fXvBtWI_nfbbqT8i7ZUiBSMEZ9nss9FzJkUNIpqT3oyKxStkbEpr4NgfV4cRquzVVOw2Me3-NFfdUYWJl4_1W0oVbN_RrqBefA7lIjHSOjaGKF9aCQg'
 
 # Set the headers for the API request
 headers = {
@@ -46,12 +46,12 @@ headers = {
 
 # Set the payload for the API request
 payload = {
-    'author': 'urn:li:person:YOUR_USER_ID',
+    'author': 'urn:li:person:memes-ai',
     'lifecycleState': 'PUBLISHED',
     'specificContent': {
         'com.linkedin.ugc.ShareContent': {
             'shareCommentary': {
-                'text': joke  # Use the generated joke as the text
+                'text': "HI, I'M BACK!"  # Use the generated joke as the text
             },
             'shareMediaCategory': 'NONE'
         }
